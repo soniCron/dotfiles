@@ -1,0 +1,191 @@
+[global_config]
+  dbus = False
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  focus = mouse
+  handle_size = 20
+  inactive_color_offset = 0.65
+  tab_position = bottom
+  title_inactive_bg_color = "#2e3436"
+  title_transmit_bg_color = "#888a85"
+  title_transmit_fg_color = "#000000"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[Work]]
+    [[[child0]]]
+      fullscreen = True
+      last_active_term = ebe46d13-cb2b-4115-8606-5688eb97bcd9
+      last_active_window = False
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1440, 900
+      title = /usr/bin/zsh
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 450
+      ratio = 0.5
+      type = VPaned
+    [[[child11]]]
+      order = 1
+      parent = child5
+      position = 716
+      ratio = 0.497913769124
+      type = HPaned
+    [[[child4]]]
+      fullscreen = True
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1440, 900
+      title = /usr/bin/zsh
+      type = Window
+    [[[child5]]]
+      active_page = 0
+      labels = None, None, None
+      last_active_term = 1d5bafc0-16df-4f8a-b31a-4175334488e1, 0ab3e27f-40d1-4876-872c-67695f46ed67, 9d1b6068-081e-415d-a48d-227dec7a3726
+      order = 0
+      parent = child4
+      type = Notebook
+    [[[child6]]]
+      order = 0
+      parent = child5
+      position = 719
+      ratio = 0.5
+      type = HPaned
+    [[[child8]]]
+      order = 1
+      parent = child6
+      position = 434
+      ratio = 0.500576701269
+      type = VPaned
+    [[[terminal10]]]
+      order = 1
+      parent = child8
+      profile = default
+      type = Terminal
+      uuid = 1d5bafc0-16df-4f8a-b31a-4175334488e1
+    [[[terminal12]]]
+      order = 0
+      parent = child11
+      profile = default
+      type = Terminal
+      uuid = 0ab3e27f-40d1-4876-872c-67695f46ed67
+    [[[terminal13]]]
+      command = ""
+      order = 1
+      parent = child11
+      profile = default
+      type = Terminal
+      uuid = 4d8bb67e-4ae3-4ba9-9b5e-6437225dbe27
+    [[[terminal14]]]
+      order = 2
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = 9d1b6068-081e-415d-a48d-227dec7a3726
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = ebe46d13-cb2b-4115-8606-5688eb97bcd9
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = ddebd4b2-c81c-4d71-b761-411a5addced8
+    [[[terminal7]]]
+      order = 0
+      parent = child6
+      profile = default
+      type = Terminal
+      uuid = 471a495e-2ad9-4bd0-8b46-8d11bfbe983e
+    [[[terminal9]]]
+      order = 0
+      parent = child8
+      profile = default
+      type = Terminal
+      uuid = 5f9534a0-3b98-4e4b-b130-93ca7edc7b6f
+  [[nas stats]]
+    [[[child0]]]
+      fullscreen = True
+      last_active_term = 6abb9559-ad12-47ec-bc5f-6e4276be9ba3
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1440, 900
+      title = /usr/bin/zsh
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 450
+      ratio = 0.5
+      type = VPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = ca8fce27-736a-4a83-9029-1e89603a6d81
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 6abb9559-ad12-47ec-bc5f-6e4276be9ba3
+[plugins]
+[profiles]
+  [[default]]
+    audible_bell = True
+    background_color = "#282828"
+    background_darkness = 0.9
+    copy_on_selection = True
+    cursor_color = "#8ae234"
+    font = Terminus 9
+    foreground_color = "#ebdbb2"
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
+  [[Local]]
+    allow_bold = False
+    background_color = "#282828"
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    font = Operator Mono Light 10
+    foreground_color = "#ebdbb2"
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    show_titlebar = False
+    use_system_font = False
+  [[console]]
+    allow_bold = False
+    audible_bell = True
+    background_color = "#121212"
+    background_darkness = 0.9
+    copy_on_selection = True
+    cursor_color = "#8ae234"
+    font = Less Perfect DOS VGA 12
+    palette = "#000000:#ff0000:#00ff00:#ffff00:#4242ff:#ff00ff:#00ffff:#eeeeec:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
