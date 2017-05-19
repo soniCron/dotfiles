@@ -8,10 +8,23 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 	    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 		endif
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:polyglot_disabled = ['crystal']
+let g:syntastic_crystal_checkers=['crystal']
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
@@ -27,7 +40,10 @@ Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'tpope/vim-surround'
 "Plug 'felixhummel/setcolors.vim'
-Plug 'qualiabyte/vim-colorstepper'
+"Plug 'qualiabyte/vim-colorstepper'
+"nmap <F6> <Plug>ColorstepPrev
+"nmap <F7> <Plug>ColorstepNext
+"nmap <S-F7> <Plug>ColorstepReload
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
@@ -39,9 +55,6 @@ Plug 'asciidoc/vim-asciidoc'
 Plug 'chrisbra/unicode.vim'
 Plug 'ap/vim-buftabline'
 
-nmap <F6> <Plug>ColorstepPrev
-nmap <F7> <Plug>ColorstepNext
-nmap <S-F7> <Plug>ColorstepReload
 
 "if has("nvim")
 	"Plug 'rliang/nvim-pygtk3', {'do': 'make install'}
