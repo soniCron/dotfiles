@@ -14,7 +14,8 @@ fi
 export PS1="> "
 autoload -Uz promptinit
 promptinit
-prompt bart
+#prompt bart
+prompt steeef
 
 autoload -U zmv
 alias mmv='noglob zmv -W'
