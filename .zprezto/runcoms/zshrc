@@ -31,6 +31,8 @@ function chpwd() {
     ls
 }
 
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 # Use hjkl keys for autocomplete menus
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
