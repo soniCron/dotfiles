@@ -69,10 +69,10 @@ bindsym $mod2+space exec rofi -show drun -lines 7 -eh 1 -width 100 -padding 500 
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod3+h focus left
-bindsym $mod3+j focus down
-bindsym $mod3+k focus up
-bindsym $mod3+l focus right
+bindsym $mod2+h focus left
+bindsym $mod2+j focus down
+bindsym $mod2+k focus up
+bindsym $mod2+l focus right
 
 # alternatively, you can use the cursor keys:
 #bindsym $mod2+Left focus left
@@ -81,10 +81,10 @@ bindsym $mod3+l focus right
 #bindsym $mod2+Right focus right
 
 # move focused window
-bindsym $mod3+Shift+h move left
-bindsym $mod3+Shift+j move down
-bindsym $mod3+Shift+k move up
-bindsym $mod3+Shift+l move right
+bindsym $mod2+Shift+h move left
+bindsym $mod2+Shift+j move down
+bindsym $mod2+Shift+k move up
+bindsym $mod2+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 #bindsym $mod+Shift+Left move left
