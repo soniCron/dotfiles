@@ -195,7 +195,11 @@ prompt_daniel_setup () {
 	# set directly from here.  There should be no clash if both
 	# are in use.
 	# fg[%m]="%F{${1:-red}}"
-	MACHINE_COLOR=$(echo "ibase=16; $(hostname | md5sum | cut -c1 | tr \[a-z\] \[A-Z\])" | bc)
+	if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+		MACHINE_COLOR=$(echo "ibase=16; $(hostname | md5sum | cut -c1-2 | tr \[a-z\] \[A-Z\])" | bc)
+	else
+		MACHINE_COLOR=$(echo "ibase=16; $(hostname | md5sum | cut -c1 | tr \[a-z\] \[A-Z\])" | bc)
+	fi
 
 	fg[%m]="%F{$MACHINE_COLOR}"
 	fg[%~]="%F{${1:-default}}"
