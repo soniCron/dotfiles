@@ -201,11 +201,11 @@ prompt_daniel_setup () {
 		MACHINE_COLOR=$(echo "ibase=16; $(hostname | md5sum | cut -c1 | tr \[a-z\] \[A-Z\])" | bc)
 	fi
 
-	fg[%m]="%F{$MACHINE_COLOR}"
+	fg[%m]="%F{${5:-$MACHINE_COLOR}}"
 	fg[%~]="%F{${1:-default}}"
 	fg[%h]="%F{${2:-blue}}"
 	fg[%D]="%F{${3:-default}}"
-	fg[%@]="%F{${4:-red}}"
+	fg[%@]="%F{${4:-$MACHINE_COLOR}}"
 	;;
     esac; done
 
