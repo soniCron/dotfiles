@@ -25,9 +25,16 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 #alias t='todo-txt'
 
+# automatically show directory listing after cd
 function chpwd() {
     emulate -L zsh
     ls
 }
+
+# Use hjkl keys for autocomplete menus
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
