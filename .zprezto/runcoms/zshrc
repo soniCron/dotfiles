@@ -24,6 +24,7 @@ promptinit
 autoload -U zmv
 alias mmv='noglob zmv -W'
 #alias t='todo-txt'
+alias se='sudoedit'
 
 # automatically show directory listing after cd
 function chpwd() {
