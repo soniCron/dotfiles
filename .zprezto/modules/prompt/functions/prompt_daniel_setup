@@ -93,6 +93,7 @@ prompt_daniel_preexec () {
 	# Use history text to avoid alias expansion
 	PSCMD=$history[$HISTCMD]
     fi
+	print ""
     return 0
 }
 
@@ -100,6 +101,18 @@ prompt_daniel_precmd () {
     setopt localoptions noxtrace noksharrays unset
     local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
 
+	drawline=""
+	drawline2=""
+	for i in {1..$COLUMNS}; drawline="─$drawline"
+	for i in {1..$COLUMNS}; drawline2="━$drawline2"
+	#drawline="%U${drawline}%u"
+	#drawline="$drawline"
+	print ""
+#	print "$FG[238]"
+#$drawline"
+	print "$FG[238] > $PSCMD"
+	print "$drawline"
+	print ""
 
 
     : "${PSCMD:=$history[$[HISTCMD-1]]}"	# Default to history text
@@ -168,15 +181,18 @@ prompt_daniel_ps1 () {
     # Assemble the new prompt
     ps1=( ${(f)PS1} )		# Split the existing prompt at newlines
     ps1=(
+	#$'\n'
+	#'${drawline'
+	#$'\n'
 	"%$[COLUMNS-PSCOL]>..>"	# Begin truncation (upper left prompt)
 	"$host"
 	"$dir"
-	"$hist1"		# Empty when too wide for one line
+#	"$hist1"		# Empty when too wide for one line
 	"%<<"			# End truncation (end upper left prompt)
 	"$space"		# Pad line to upper right position
 	"%$[COLUMNS-PSCOL-15](l. . $date)"
 	"%$[COLUMNS-PSCOL-7](l.. $time)"
-	"$hist2"		# Empty when $hist1 is not empty
+#	"$hist2"		# Empty when $hist1 is not empty
 	$'\n'
 	$ps1[-1]		# Keep last line of the existing prompt
 	)
