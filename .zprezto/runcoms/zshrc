@@ -9,6 +9,7 @@ eval "$(fasd --init auto)"
 
 export PS1='${vcs_info_msg_0_}> '
 setopt promptsubst
+#●
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
