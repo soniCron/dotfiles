@@ -43,3 +43,6 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Color files differently in ls
+eval $( dircolors -b $HOME/.dircolors )
