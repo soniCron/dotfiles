@@ -137,9 +137,9 @@ prompt_daniel_ps1 () {
     host="%{$fg[%m]%}%m$rs"
     hist1="%9(v. . %{$fg[%h]%}$eon%7v$eoff$rs )"
     hist2=$'%9(v.\n'"%{$fg[%h]%}$eon%7v$eoff$rs.)"
-    dir="%{$fg[%~]%}%8~$rs"
+    dir="%{$fg[%~] %}%8~$rs"
     space=%8v
-    date="%{$fg[%D]%}%D$rs"	# Prefer "%{$fg[%D]%}%W$rs" in the USA?
+    date="%{$fg[%D]%}%W$rs"	# Prefer "%{$fg[%D]%}%W$rs" in the USA?
     time="%{$fg[%@]%}%@$rs"
 
     # This is just a tad silly ...
@@ -151,8 +151,8 @@ prompt_daniel_ps1 () {
     ps1=(
 	"%$[COLUMNS-PSCOL]>..>"	# Begin truncation (upper left prompt)
 	"$host"
-	"$hist1"		# Empty when too wide for one line
 	"$dir"
+	"$hist1"		# Empty when too wide for one line
 	"%<<"			# End truncation (end upper left prompt)
 	"$space"		# Pad line to upper right position
 	"%$[COLUMNS-PSCOL-15](l. . $date)"
@@ -194,11 +194,14 @@ prompt_daniel_setup () {
 	# This used to be provided by the function colors, but is now
 	# set directly from here.  There should be no clash if both
 	# are in use.
-	fg[%m]="%F{${1:-red}}"
+	# fg[%m]="%F{${1:-red}}"
+	MACHINE_COLOR=$(echo "ibase=16; $(hostname | md5sum | cut -c1 | tr \[a-z\] \[A-Z\])" | bc)
+
+	fg[%m]="%F{$MACHINE_COLOR}"
+	fg[%~]="%F{${1:-default}}"
 	fg[%h]="%F{${2:-blue}}"
-	fg[%~]="%F{${3:-default}}"
-	fg[%D]="%F{${4:-default}}"
-	fg[%@]="%F{${1:-red}}"
+	fg[%D]="%F{${3:-default}}"
+	fg[%@]="%F{${4:-red}}"
 	;;
     esac; done
 
