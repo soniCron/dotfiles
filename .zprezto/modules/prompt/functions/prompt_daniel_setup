@@ -1,5 +1,7 @@
 zmodload -i zsh/parameter || return 1
 
+setopt promptsubst
+
 prompt_daniel_help () {
     setopt localoptions nocshnullcmd noshnullcmd
     [[ $ZSH_VERSION < 4.2.2 ]] &&
@@ -98,9 +100,22 @@ prompt_daniel_precmd () {
     setopt localoptions noxtrace noksharrays unset
     local zero='%([BSUbfksu]|[FB]{*})' escape colno lineno
 
+
+
     : "${PSCMD:=$history[$[HISTCMD-1]]}"	# Default to history text
 
     # Using psvar here protects against unwanted promptsubst expansions.
+
+  # Check for untracked files or updated submodules since vcs_info does not.
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    branch_format="${_prompt_vcs_colors[1]}%b%f%u%c${_prompt_vcs_colors[4]}●%f"
+  else
+    branch_format="${_prompt_vcs_colors[1]}%b%f%u%c"
+  fi
+
+  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+
+  vcs_info 'prompt'
 
     psvar[7]="$PSCMD"
     psvar[8]=''		# No padding until we compute it
@@ -124,6 +139,9 @@ prompt_daniel_precmd () {
     # Compute and set the padding between upper left and right prompts.
     (((colno -= ${#${(f)${(%%)${(S)PS1//$~zero/}}}[1]}) > 0)) &&
 	psvar[8]=${(l:colno:: :)}
+
+
+
 }
 
 prompt_daniel_ps1 () {
@@ -145,6 +163,7 @@ prompt_daniel_ps1 () {
     # This is just a tad silly ...
     [[ $prompt_theme[1] = oliver ]] && PS1='[%h%0(?..:%?)]%# ' ||
 	PS1=${PS1//$prompt_newline/$'\n'}
+
 
     # Assemble the new prompt
     ps1=( ${(f)PS1} )		# Split the existing prompt at newlines
@@ -175,6 +194,8 @@ prompt_daniel_winch () {
 prompt_daniel_setup () {
     setopt localoptions nolocaltraps noksharrays unset
     typeset -gA fg
+
+	autoload -Uz vcs_info
 
     # A few extra niceties ...
     repeat 1; do case "$1:l" in
@@ -208,6 +229,35 @@ prompt_daniel_setup () {
 	fg[%@]="%F{${4:-$MACHINE_COLOR}}"
 	;;
     esac; done
+
+	_prompt_vcs_colors=(
+	  "%F{cyan}"
+	  "%F{yellow}"
+	  "%F{magenta}"
+	  "%F{red}"
+	  "%F{green}"
+	)
+
+	  # Formats:
+	  #   %b - branchname
+	  #   %u - unstagedstr (see below)
+	  #   %c - stagedstr (see below)
+	  #   %a - action (e.g. rebase-i)
+	  #   %R - repository path
+	  #   %S - path in the repository
+	  local branch_format="(${_prompt_vcs_colors[1]}%b%f%u%c)"
+	  local action_format="(${_prompt_vcs_colors[5]}%a%f)"
+	  local unstaged_format="${_prompt_vcs_colors[2]}●%f"
+	  local staged_format="${_prompt_vcs_colors[5]}●%f"
+
+	  # Set vcs_info parameters.
+	  zstyle ':vcs_info:*' enable bzr git hg svn
+	  zstyle ':vcs_info:*:prompt:*' check-for-changes true
+	  zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
+	  zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
+	  zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
+	  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+	  zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
     prompt_daniel_ps1
 
