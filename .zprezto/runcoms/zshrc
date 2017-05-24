@@ -55,10 +55,14 @@ source $HOME/.zsh/calc.plugin.zsh
 
 source $HOME/.antigen/antigen.zsh
 
+antigen bundle willghatch/zsh-saneopt
 antigen bundle veelenga/crystal-zsh
-antigen bundle zdharma/fast-syntax-highlighting
+TIPZ_TEXT='Next time try: '
+antigen bundle molovo/tipz 
+antigen bundle hlissner/zsh-autopair
 antigen bundle psprint/history-search-multi-word
 antigen bundle supercrabtree/k
+antigen bundle zdharma/fast-syntax-highlighting
 #antigen bundle teancom/k
 
 antigen apply
