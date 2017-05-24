@@ -63,6 +63,11 @@ antigen bundle hlissner/zsh-autopair
 antigen bundle psprint/history-search-multi-word
 antigen bundle supercrabtree/k
 antigen bundle zdharma/fast-syntax-highlighting
+#zstyle ':notify:*' notifier ~/.zsh/notify.sh
+#antigen bundle marzocchi/zsh-notify
+antigen bundle caarlos0/zsh-pg
+antigen bundle srijanshetty/zsh-pandoc-completion
+#antigen bundle add srijanshetty/zsh-suffix-alias
 #antigen bundle teancom/k
 
 antigen apply
