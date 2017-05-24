@@ -28,6 +28,10 @@ alias mmv='noglob zmv -W'
 #alias t='todo-txt'
 alias se='sudoedit'
 
+# Git aliases
+alias gmv='git mv'
+alias grm='git rm'
+
 # automatically show directory listing after cd
 function chpwd() {
     emulate -L zsh
@@ -46,3 +50,6 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Color files differently in ls
 eval $( dircolors -b $HOME/.dircolors )
+
+source $HOME/.zsh/calc.plugin.zsh
+
