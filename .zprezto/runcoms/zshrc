@@ -53,3 +53,8 @@ eval $( dircolors -b $HOME/.dircolors )
 
 source $HOME/.zsh/calc.plugin.zsh
 
+source $HOME/.antigen/antigen.zsh
+
+antigen bundle veelenga/crystal-zsh
+
+antigen apply
