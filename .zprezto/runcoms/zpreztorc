@@ -37,7 +37,6 @@ zstyle ':prezto:load' pmodule \
   'fasd' \
   'git' \
   'docker' \
-  'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
   'rsync' \

@@ -56,5 +56,9 @@ source $HOME/.zsh/calc.plugin.zsh
 source $HOME/.antigen/antigen.zsh
 
 antigen bundle veelenga/crystal-zsh
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle psprint/history-search-multi-word
+antigen bundle supercrabtree/k
+#antigen bundle teancom/k
 
 antigen apply
