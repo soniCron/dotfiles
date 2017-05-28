@@ -27,6 +27,8 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 #alias t='todo-txt'
 alias se='sudoedit'
+alias md='nocorrect mkdir'
+alias psx='ps aux | grep '
 
 # Git aliases
 alias gmv='git mv'
