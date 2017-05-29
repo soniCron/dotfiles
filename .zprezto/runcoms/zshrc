@@ -5,6 +5,7 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+
 eval "$(fasd --init auto)"
 
 export PS1='${vcs_info_msg_0_}> '
@@ -29,6 +30,11 @@ alias mmv='noglob zmv -W'
 alias se='sudoedit'
 alias md='nocorrect mkdir'
 alias psx='ps aux | grep '
+alias srestart='sudo systemctl restart'
+alias sstart='sudo systemctl start'
+alias sstop='sudo systemctl stop'
+alias senable='sudo systemctl enable'
+alias sdisable='sudo systemctl disable'
 
 # Git aliases
 alias gmv='git mv'
@@ -73,3 +79,17 @@ antigen bundle srijanshetty/zsh-pandoc-completion
 #antigen bundle teancom/k
 
 antigen apply
+
+
+# dtach function to handle multiple dtach sessions
+function persist() {
+	
+}
+
+# can run ZSH with command like:
+#     zsh -is eval 'command here'
+# will result in interactive shell after running command
+if [[ $1 == eval ]]; then
+	"$@"
+	set --
+fi
